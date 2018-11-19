@@ -1,0 +1,32 @@
+<!-- ml-md-auto : apply this for right alligning things in navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to "Chat", root_path, class: "navbar-brand"%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-md-auto">
+      <% if user_signed_in? %>
+        <div class="btn-group">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <li class="nav-item">
+              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item"%>
+            </li>
+          </div>
+        </div>        
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
