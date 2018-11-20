@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
 		
 		message.save
 		redirect_to @chatroom
+		#not working :( respond_to :js
 	end
 
 

@@ -12,10 +12,8 @@
 	<% end %>
 </div>
 
-
-<%= form_for [@chatroom, Message.new] do |f| %>
+<!-- new message is created for a chatroom -->
+<%= form_for [@chatroom, Message.new], remote: true do |f| %>
 	<%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
 <% end %>
 
-<%#= link_to 'Edit', edit_chatroom_path(@chatroom) %> 
-<%#= link_to 'Back', chatrooms_path %>
