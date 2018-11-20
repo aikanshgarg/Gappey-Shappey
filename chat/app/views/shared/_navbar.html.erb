@@ -9,7 +9,7 @@
     <ul class="navbar-nav ml-md-auto">
       <% if user_signed_in? %>
         <div class="btn-group">
-          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %></button>
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %>&nbsp</button>
           <div class="dropdown-menu dropdown-menu-right">
             <li class="nav-item">
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item"%>
