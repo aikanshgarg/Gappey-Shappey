@@ -5,10 +5,10 @@
   <%= @chatroom.name %>
 </p>
 
-<div data-behaviour='messages'>
+<div data-behaviour='messages' data-chatroom-id='<%= @chatroom.id %>'>
 <!-- 	we grab the last 100 messages by desc function, then reverse this array so that we see the last sent message among these 100 at bottom -->
 	<% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message| %>
-		<div><strong><%= message.user.username%>:</strong>&nbsp<%= message.body %></div>
+		<%= render message %>
 	<% end %>
 </div>
 

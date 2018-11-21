@@ -6,10 +6,20 @@ class MessagesController < ApplicationController
 	def create
 		message = @chatroom.messages.new(message_params)
 		message.user = current_user
-		
 		message.save
+		
+
+		# we will send this message to the queue which will build a job. Job will later on send it to action cable for all the browsers that are conncted
+		MessageRelayJob.perform_later(message)
+		
 		redirect_to @chatroom
-		#not working :( respond_to :js
+		#nothing's working :( 
+		# respond_to do |format|
+		#   format.js {render :layout=>false}
+		# end
+		#respond_to :js
+		
+		
 	end
 
 
