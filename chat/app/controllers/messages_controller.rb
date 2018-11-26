@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 		# we will send this message to the queue which will build a job. Job will later on send it to action cable for all the browsers that are conncted
 		MessageRelayJob.perform_later(message)
 		
-		#redirect_to @chatroom
+		redirect_to @chatroom
 		#nothing's working :( 
 		# respond_to do |format|
 		#   format.js {render :layout=>false}

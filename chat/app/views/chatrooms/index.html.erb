@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+
+<% if !user_signed_in? %>
+
+<% else %>
+
 
 <h1>Chatrooms</h1>
 
@@ -14,11 +18,11 @@
     <% @chatrooms.each do |chatroom| %>
       <tr>
         <td><%= chatroom.name %></td>
-        <td><%= link_to 'Show', chatroom %></td>
-        <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
-        <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Join', chatroom_chatroom_users_path(chatroom), method: :post %></td>
-        <td><%= link_to 'Leave', chatroom_chatroom_users_path(chatroom), method: :delete %></td>
+        <td><%= link_to 'Show', chatroom, class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_chatroom_path(chatroom), class: "btn btn-primary btn-sm"  %></td>
+        <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-sm"  %></td>
+        <td><%= link_to 'Join', chatroom_chatroom_users_path(chatroom), method: :post, class: "btn btn-primary btn-sm"  %></td>
+        <td><%= link_to 'Leave', chatroom_chatroom_users_path(chatroom), method: :delete, class: "btn btn-primary btn-sm"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,3 +31,4 @@
 <br>
 
 <%= link_to 'New Chatroom', new_chatroom_path %>
+<% end %>
