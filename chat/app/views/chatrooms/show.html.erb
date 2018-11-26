@@ -1,12 +1,9 @@
+<div class="container" id="room-name">
+	<div class="col s12"><span class="flow-text"><strong>Room Name: </strong><%= @chatroom.name %></span></div>
+</div>
 
-<div class="container">
-	
-	<p class="container">
-	  <strong>Room Name: </strong>
-	  <%= @chatroom.name %>
-	</div>
 
-	<div class="container" id="convos">
+<div class="container" id="convos">
 
 	<div data-behaviour='messages' data-chatroom-id='<%= @chatroom.id %>'>
 	<!-- 	we grab the last 100 messages by desc function, then reverse this array so that we see the last sent message among these 100 at bottom -->
@@ -24,6 +21,20 @@
 		<% end %>
 	</div>
 
-	</div>
-
 </div>
+
+
+<style type="text/css">
+	#convos {
+		/*border: 2px dashed; */
+		margin-top: 20px;
+		background: #fff;
+	}
+	#room-name {
+		background: #ee6e73;
+	    padding: 16px;
+	    margin-top: 20px;
+	    margin-bottom: 0px;
+	    text-align: center;
+	}
+</style>

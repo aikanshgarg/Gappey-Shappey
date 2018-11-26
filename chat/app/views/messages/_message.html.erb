@@ -1,11 +1,11 @@
 <div class="container">
 	<% if user_signed_in? && message.user == current_user %>
 		<span class="my-msg">
-			<strong><%= message.user.username%>: </strong><%= message.body %>
+			<strong><%= message.user.username%>: &nbsp </strong><%= message.body %><br>
 		</span>
 	<% else %>
 		<span class="others-msg">
-			<strong><%= message.user.username%>: </strong><%= message.body %>
+			<strong><%= message.user.username%>: &nbsp</strong><%= message.body %>
 		</span>
 	<% end %>
 </div>
@@ -20,7 +20,6 @@
 		display: inline-flex;
 		flex-wrap: nowrap;
 		margin-top: 10px;
-		 margin-left: 57%;
 	}	
 
 	.others-msg {
