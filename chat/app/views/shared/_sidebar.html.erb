@@ -1,10 +1,8 @@
-<div class="col-sm-2" style="position: fixed; margin-top: 5%;">
-          <% if user_signed_in? %>
-            <h5>Chatrooms</h5>
-            <ul>
-              <% current_user.chatrooms.each do |chatroom| %>
-                <li><%= link_to chatroom.name, chatroom, data: {behaviour: "chatroom-link", chatroom_id: chatroom.id} %></li>
-              <% end %>
-            </ul>
-          <% end %>
-         </div>
+
+<% if user_signed_in? %>
+	<ul>
+	  <% current_user.chatrooms.each do |chatroom| %>
+	    <li><%= link_to chatroom.name, chatroom, data: {behaviour: "chatroom-link", chatroom_id: chatroom.id} %></li>
+	  <% end %>
+	</ul>
+<% end %>

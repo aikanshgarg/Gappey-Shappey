@@ -1,35 +1,71 @@
-<!-- ml-md-auto : apply this for right alligning things in navbar -->
-
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="<%=root_path%>">
-    <img src="https://gorails.com/uploads/store/ae2c9f121673746dfc24461e17adf092.png" width="40" height="40" class="d-inline-block align-top" alt="">
-    Gappey Shappey
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-md-auto">
-      <% if user_signed_in? %>
-        <div class="btn-group">
-          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %>&nbsp</button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <li class="nav-item">
-              <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item"%>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item"%>
-            </li>
-          </div>
-        </div>        
+<nav class="light-blue lighten-1" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="<%=root_path%>" class="brand-logo">
+      <img src="https://gorails.com/uploads/store/ae2c9f121673746dfc24461e17adf092.png" width="40" height="40" class="gs-logo" alt="">
+      Chatzy!
+    </a> 
+    <ul class="right hide-on-med-and-down">
+      <% if !user_signed_in? %>
+        <li><%= link_to "Sign Up", new_user_registration_path%></li>
+        <li><%= link_to "Login", new_user_session_path%></li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
-        </li>
+        <li><%= link_to "Settings", edit_user_registration_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
       <% end %>
     </ul>
   </div>
-</nav>
+
+</nav> 
+
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+<!-- CONTENT INSIDE THE SIDEBAR : CHATROOMS LIST -->
+<ul id="slide-out" class="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background" style="background-color: #ff9800;">
+      </div>
+      <% if !user_signed_in? %>
+        <a href="#user"><img class="circle" src="https://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg"></a>
+        <a href="#name"><span class="white-text name">Aikansh Garg</span></a>
+        <a href="#email"><span class="white-text email">aikanshgarg0303@gmail.com</span></a>
+      <% else %>
+        <a href="#user"><img class="circle" src="http://www.ivuzee.co/assets/img/avatars/profiles/avatar-1.png"></a>
+        <a href="#name"><span class="white-text name"><%= current_user.username %></span></a>
+        <a href="#email"><span class="white-text email"><%= current_user.email %></span></a>
+      <% end %>
+    </div>
+  </li>
+
+  
+  <% if user_signed_in? %>
+    <li><a class="subheader">Your Chatrooms</a></li>
+    <%= render 'shared/sidebar' %>
+  <% else %>
+    <li><a class="subheader">All Chatrooms</a></li>
+  <% end %>
+</ul>
+
+
+
+<style type="text/css">
+  .gs-logo {
+    background: white;
+    border-radius: 50%;
+    margin-bottom: -9px;
+    padding: 5px;
+  }
+
+  .sidenav-trigger {
+    margin-left: 22px;
+    position: absolute;
+    margin-top: -41px;
+    color: #fff;
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+</script>

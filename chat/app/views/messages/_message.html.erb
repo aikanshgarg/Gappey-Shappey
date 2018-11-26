@@ -1,1 +1,35 @@
-<div><strong><%= message.user.username%>:</strong>&nbsp<%= message.body %></div>
+<div class="container">
+	<% if user_signed_in? && message.user == current_user %>
+		<span class="my-msg">
+			<strong><%= message.user.username%>: </strong><%= message.body %>
+		</span>
+	<% else %>
+		<span class="others-msg">
+			<strong><%= message.user.username%>: </strong><%= message.body %>
+		</span>
+	<% end %>
+</div>
+
+
+<style type="text/css">
+	
+	.my-msg {
+		background-color: #ff9800;
+		padding: 5px;
+		border-radius: 3px;
+		display: inline-flex;
+		flex-wrap: nowrap;
+		margin-top: 10px;
+		 margin-left: 57%;
+	}	
+
+	.others-msg {
+		background-color: #29b6f6;
+		border-radius: 3px;
+		padding: 5px;
+		display: inline-flex;
+		flex-wrap: nowrap;
+		margin-top: 10px;
+	}
+
+</style>

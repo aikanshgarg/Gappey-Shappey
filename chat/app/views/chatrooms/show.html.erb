@@ -1,19 +1,29 @@
-<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Room Name:</strong>
-  <%= @chatroom.name %>
-</p>
+<div class="container">
+	
+	<p class="container">
+	  <strong>Room Name: </strong>
+	  <%= @chatroom.name %>
+	</div>
 
-<div data-behaviour='messages' data-chatroom-id='<%= @chatroom.id %>'>
-<!-- 	we grab the last 100 messages by desc function, then reverse this array so that we see the last sent message among these 100 at bottom -->
-	<% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message| %>
-		<%= render message %>
-	<% end %>
+	<div class="container" id="convos">
+
+	<div data-behaviour='messages' data-chatroom-id='<%= @chatroom.id %>'>
+	<!-- 	we grab the last 100 messages by desc function, then reverse this array so that we see the last sent message among these 100 at bottom -->
+		<% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message| %>
+			<%= render message %>
+		<% end %>
+	</div>
+
+	<div class="container"><hr style="margin-top: 20px;"></div>
+	
+	<div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+		<!-- new message is created for a chatroom -->
+		<%= form_for [@chatroom, Message.new] do |f| %>
+			<%= f.text_area :body, rows: 1, autofocus: true, placeholder: "Say something interesting enough...!?" %>
+		<% end %>
+	</div>
+
+	</div>
+
 </div>
-
-<!-- new message is created for a chatroom -->
-<%= form_for [@chatroom, Message.new] do |f| %>
-	<%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
-<% end %>
-
